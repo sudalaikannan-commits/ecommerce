@@ -120,7 +120,7 @@ export const productSchema = z.object({
   isBestSeller: z.boolean().default(false),
   isNewArrival: z.boolean().default(false),
   isActive: z.boolean().default(true),
-  videoUrl: z.string().url().optional().nullable(),
+  videoUrl: z.string().url().or(z.literal("")).optional().nullable(),
   images: z.array(productImageSchema).default([]),
   variants: z.array(variantSchema).default([]),
 });
