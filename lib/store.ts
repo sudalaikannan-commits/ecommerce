@@ -159,12 +159,12 @@ export async function listProducts(query: ProductQuery = {}) {
 
   if (query.search) {
     where.OR = [
-      { name: { contains: query.search } },
-      { shortDescription: { contains: query.search } },
-      { description: { contains: query.search } },
-      { sku: { contains: query.search } },
-      { brand: { name: { contains: query.search } } },
-      { category: { name: { contains: query.search } } },
+      { name: { contains: query.search, mode: "insensitive" } },
+      { shortDescription: { contains: query.search, mode: "insensitive" } },
+      { description: { contains: query.search, mode: "insensitive" } },
+      { sku: { contains: query.search, mode: "insensitive" } },
+      { brand: { name: { contains: query.search, mode: "insensitive" } } },
+      { category: { name: { contains: query.search, mode: "insensitive" } } },
     ];
   }
   if (query.categorySlug) {

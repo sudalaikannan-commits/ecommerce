@@ -11,11 +11,11 @@ export async function GET(req: NextRequest) {
       where: {
         isActive: true,
         OR: [
-          { name: { contains: q } },
-          { sku: { contains: q } },
-          { tags: { contains: q } },
-          { brand: { name: { contains: q } } },
-          { category: { name: { contains: q } } },
+          { name: { contains: q, mode: "insensitive" } },
+          { sku: { contains: q, mode: "insensitive" } },
+          { tags: { contains: q, mode: "insensitive" } },
+          { brand: { name: { contains: q, mode: "insensitive" } } },
+          { category: { name: { contains: q, mode: "insensitive" } } },
         ],
       },
       include: {
