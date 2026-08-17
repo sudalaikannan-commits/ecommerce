@@ -4,15 +4,10 @@ import { prisma } from "@/lib/prisma";
 import { ok, fail, parseBody, handleError, assertTrustedOrigin } from "@/lib/api";
 import { verifyOtpSchema } from "@/lib/validations";
 import { signSessionToken, sessionCookieOptions } from "@/lib/auth";
-import { sendSms } from "@/lib/sms";
 import {
-  generateOtp,
-  hashOtp,
   verifyOtp,
-  maskPhone,
   OTP_TTL_MS,
   OTP_MAX_ATTEMPTS,
-  OTP_RESEND_COOLDOWN_MS,
 } from "@/lib/otp";
 
 /**
@@ -67,34 +62,29 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Email verified → generate & send the phone OTP.
-      if (!user.phone) {
-        return fail("Phone number is missing for verification.", 400);
-      }
-      const otp = generateOtp();
-      const phoneToken = hashOtp(otp);
-      await prisma.user.update({
+      // Email verified → activate the account directly.
+      // Phone verification is optional; customers can add/verify their
+      // phone number later from their account when SMS is available.
+      const activated = await prisma.user.update({
         where: { id: user.id },
         data: {
           emailVerified: true,
           emailToken: null,
           emailTokenExpiry: null,
           emailTokenAttempts: 0,
-          phoneToken,
-          phoneTokenExpiry: new Date(Date.now() + OTP_TTL_MS),
+          phoneToken: null,
+          phoneTokenExpiry: null,
           phoneTokenAttempts: 0,
-          lastOtpSentAt: new Date(),
+          regToken: null,
+          status: "ACTIVE",
         },
+        select: { id: true, email: true, name: true, phone: true, avatar: true, role: true, status: true },
       });
-      await sendSms(
-        user.phone,
-        `Your NovaCart verification code is ${otp}. It expires in 10 minutes. Never share this code with anyone.`
-      );
-      return ok({
-        step: "phone",
-        phone: maskPhone(user.phone),
-        expiresInSeconds: OTP_TTL_MS / 1000,
-      });
+
+      const token = await signSessionToken({ userId: activated.id, role: activated.role });
+      cookies().set(sessionCookieOptions(req, token));
+
+      return ok({ user: activated }, 201);
     }
 
     // ---------------- phone channel ----------------

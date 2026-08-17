@@ -27,7 +27,6 @@ export async function POST(req: NextRequest) {
 
     const email = body.email.toLowerCase().trim();
     const phone = body.phone ? body.phone.trim() : null;
-    if (!phone) return fail("Phone number is required for account verification.", 422);
 
     // Existing ACTIVE account with the same email → reject.
     const existing = await prisma.user.findUnique({ where: { email } });

@@ -169,7 +169,7 @@ function RegisterFlow() {
     setVerifying(true);
     setAlert(null);
     try {
-      const res = await api<{ step: string; phone?: string; expiresInSeconds?: number }>(
+      const res = await api<{ user?: any; step?: string; phone?: string; expiresInSeconds?: number }>(
         "/api/auth/verify-otp",
         {
           method: "POST",
@@ -177,6 +177,16 @@ function RegisterFlow() {
         }
       );
       setOtp("");
+      if (res.user) {
+        setUser(res.user);
+        refreshCartCount();
+        setPhase("done");
+        showToast("Account created successfully!");
+        setTimeout(() => {
+          router.push(redirect.startsWith("/") ? redirect : "/account");
+        }, 1800);
+        return;
+      }
       setMaskedPhone(res.phone || "");
       startOtpTimer(res.expiresInSeconds);
       setPhase("phone");
@@ -302,19 +312,18 @@ function RegisterFlow() {
                 </div>
               </div>
               <div>
-                <label className="label">Phone Number *</label>
+                <label className="label">Phone Number</label>
                 <div className="relative">
                   <Phone className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                   <input
                     type="tel"
-                    required
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 98765 43210 (optional)"
                     className="input pl-9"
                   />
                 </div>
-                <p className="mt-1 text-xs text-gray-500">We&apos;ll send an OTP to this number to verify it.</p>
+                <p className="mt-1 text-xs text-gray-500">Optional. You can add and verify your phone later.</p>
               </div>
               <div>
                 <label className="label">Password *</label>
