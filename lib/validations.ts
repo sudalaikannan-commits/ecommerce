@@ -48,10 +48,12 @@ export const changePasswordSchema = z.object({
   newPassword: password,
 });
 
+const imageUrl = z.string().url().or(z.literal(""));
+
 export const updateProfileSchema = z.object({
   name: z.string().min(2).max(100),
   phone: z.string().max(20).optional().nullable(),
-  avatar: z.string().url().optional().nullable(),
+  avatar: imageUrl.optional().nullable(),
 });
 
 export const newsletterSchema = z.object({ email });
@@ -126,7 +128,7 @@ export const productSchema = z.object({
 export const categorySchema = z.object({
   name: z.string().min(2).max(100),
   description: z.string().max(1000).optional().nullable(),
-  image: z.string().url().optional().nullable(),
+  image: imageUrl.optional().nullable(),
   parentId: z.string().optional().nullable(),
   sortOrder: z.coerce.number().int().default(0),
   isActive: z.boolean().default(true),
@@ -134,7 +136,7 @@ export const categorySchema = z.object({
 
 export const brandSchema = z.object({
   name: z.string().min(2).max(100),
-  logo: z.string().url().optional().nullable(),
+  logo: imageUrl.optional().nullable(),
   description: z.string().max(1000).optional().nullable(),
   isActive: z.boolean().default(true),
 });

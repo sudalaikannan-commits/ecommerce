@@ -135,12 +135,12 @@ export default function AdminCategoriesPage() {
         {categories.map((c) => (
           <div key={c.id} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
             <div className="flex items-start justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+              <div className="flex min-w-0 items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
                   <Tags className="h-5 w-5" />
                 </span>
-                <div>
-                  <p className="font-semibold text-gray-900">{c.name}</p>
+                <div className="min-w-0">
+                  <p className="truncate font-semibold text-gray-900">{c.name}</p>
                   <p className="text-xs text-gray-400">{c._count.products} products</p>
                 </div>
               </div>
