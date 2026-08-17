@@ -109,7 +109,7 @@ export default function SettingsPage() {
           </div>
           <div>
             <label className="label">Phone</label>
-            <input value={profile.phone} onChange={(e) => setProfile({ ...profile, phone: e.target.value })} className="input" placeholder="+91 98765 43210" />
+            <input value={profile.phone} onChange={(e) => setProfile({ ...profile, phone: e.target.value })} className="input" placeholder="+91 86800 60912" />
           </div>
           <div className="sm:col-span-2">
             <label className="label">Email</label>

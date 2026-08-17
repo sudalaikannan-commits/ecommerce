@@ -46,7 +46,7 @@ export default function PrivacyPage() {
           </ContentSection>
           <ContentSection title="Contact">
             <p>
-              For any privacy-related queries, email us at support@novacart.in. This policy may
+              For any privacy-related queries, email us at hello@ationicagency.com. This policy may
               be updated from time to time, and the latest version will always be available on
               this page.
             </p>

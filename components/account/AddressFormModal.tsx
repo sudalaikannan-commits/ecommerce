@@ -104,7 +104,7 @@ export function AddressFormModal({
           </div>
           <div className="sm:col-span-2">
             <label className="label">Phone *</label>
-            <input required value={form.phone} onChange={(e) => set("phone", e.target.value)} className="input" placeholder="+91 98765 43210" />
+            <input required value={form.phone} onChange={(e) => set("phone", e.target.value)} className="input" placeholder="+91 86800 60912" />
           </div>
           <div className="sm:col-span-2">
             <label className="label">Address Line 1 *</label>

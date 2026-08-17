@@ -319,7 +319,7 @@ function RegisterFlow() {
                     type="tel"
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="+91 98765 43210 (optional)"
+                    placeholder="+91 86800 60912 (optional)"
                     className="input pl-9"
                   />
                 </div>

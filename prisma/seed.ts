@@ -640,7 +640,7 @@ async function main() {
       role: "ADMIN",
       emailVerified: true,
       phoneVerified: true,
-      phone: "+91 98765 43210",
+      phone: "+91 86800 60912",
     },
   });
 
@@ -881,8 +881,8 @@ async function main() {
   const settings: Record<string, string> = {
     storeName: "NovaCart",
     storeTagline: "Everything you love, delivered to your door",
-    supportEmail: "support@novacart.in",
-    supportPhone: "+91 98765 43210",
+    supportEmail: "hello@ationicagency.com",
+    supportPhone: "+91 86800 60912",
     address: "Sector 62, Noida, Uttar Pradesh, India",
     freeShippingThreshold: String(paise(499)),
     taxRate: "0",

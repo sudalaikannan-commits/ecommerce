@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Can I cancel or modify my order?",
-    a: "Orders can be cancelled as long as they haven't been shipped. Contact our support team at support@novacart.in and we'll help you cancel or modify pending orders.",
+    a: "Orders can be cancelled as long as they haven't been shipped. Contact our support team at hello@ationicagency.com and we'll help you cancel or modify pending orders.",
   },
   {
     q: "What is the return policy?",
@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "How can I contact support?",
-    a: "Reach us via the Contact page, email support@novacart.in, or call +91 98765 43210 (Mon–Sat, 10am–7pm IST). We typically respond within 24 hours.",
+    a: "Reach us via the Contact page, email hello@ationicagency.com, or call +91 86800 60912 (Mon–Sat, 10am–7pm IST). We typically respond within 24 hours.",
   },
 ];
 

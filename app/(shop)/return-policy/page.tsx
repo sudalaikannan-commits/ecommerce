@@ -25,7 +25,7 @@ export default function ReturnsPage() {
           </ContentSection>
           <ContentSection title="How to Start a Return">
             <p>
-              Contact our support team at support@novacart.in with your order number and reason
+              Contact our support team at hello@ationicagency.com with your order number and reason
               for return. Once approved, you&apos;ll receive instructions to ship the item back, and
               the refund will be processed within 5-7 business days of us receiving the
               product.

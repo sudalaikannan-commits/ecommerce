@@ -86,7 +86,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Call Us</h3>
-                <p className="mt-1 text-sm text-gray-600">+91 98765 43210</p>
+                <p className="mt-1 text-sm text-gray-600">+91 86800 60912</p>
                 <p className="text-sm text-gray-500">Mon–Sat, 10am–7pm IST</p>
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Email Us</h3>
-                <p className="mt-1 text-sm text-gray-600">support@novacart.in</p>
+                <p className="mt-1 text-sm text-gray-600">hello@ationicagency.com</p>
                 <p className="text-sm text-gray-500">We reply within 24 hours.</p>
               </div>
             </div>
