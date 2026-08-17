@@ -60,6 +60,11 @@ export function Header({
 
   const topLevel = categories.filter((c) => !c.children?.length || c.children.length > 0);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
+  };
+
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-gray-200 bg-white">
@@ -98,6 +103,7 @@ export function Header({
           <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
             <Link
               href={user ? "/account" : "/login"}
+              onClick={scrollToTop}
               className="flex items-center gap-1.5 rounded-lg px-2 py-2 text-gray-700 hover:bg-gray-100"
               title={user ? "My Account" : "Login / Register"}
             >
@@ -109,6 +115,7 @@ export function Header({
 
             <Link
               href="/account/wishlist"
+              onClick={scrollToTop}
               className="relative rounded-lg p-2 text-gray-700 hover:bg-gray-100"
               title="Wishlist"
             >
